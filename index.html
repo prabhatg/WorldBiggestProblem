@@ -2,587 +2,1015 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>The World’s Biggest Problem – In Simple Words</title>
+  <title>The World's Biggest Problem – In Simple Words</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta
     name="description"
-    content="A simple, visual explanation of the world’s biggest problem, and what we can do about it together."
+    content="8 billion people. God-level tools. Stone-age coordination. Understanding the world's biggest problem — and how we've solved it before."
   />
+  <meta property="og:title" content="The World's Biggest Problem" />
+  <meta property="og:description" content="8 billion people. God-level tools. Stone-age coordination. The good news? We've solved this before." />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="The World's Biggest Problem" />
+  <meta name="twitter:description" content="8 billion people. God-level tools. Stone-age coordination." />
   <style>
     :root {
       --bg: #020617;
-      --bg-soft: #020817;
-      --card: #020617;
+      --bg-soft: #0f172a;
+      --card: #0f172a;
       --text-main: #f9fafb;
       --text-muted: #9ca3af;
-      --accent: #38bdf8;
-      --accent-soft: rgba(56, 189, 248, 0.14);
-      --border: #1f2937;
-      --radius: 18px;
-      --shadow: 0 18px 40px rgba(15, 23, 42, 0.9);
-      --max-width: 840px;
+      --text-dim: #6b7280;
+      --accent-blue: #38bdf8;
+      --accent-green: #22c55e;
+      --accent-amber: #fbbf24;
+      --accent-rose: #fb7185;
+      --border: #1e293b;
+      --radius: 20px;
+      --shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8);
+      --max-width: 720px;
     }
 
     * {
       box-sizing: border-box;
-    }
-
-    html, body {
       margin: 0;
       padding: 0;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
-        "Segoe UI", sans-serif;
-      background: radial-gradient(circle at top, #0b1120 0, #020617 45%, #000 100%);
-      color: var(--text-main);
+    }
+
+    html {
       scroll-behavior: smooth;
+      font-size: 16px;
     }
 
     body {
+      font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text-main);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* Container */
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Sections - Full viewport height for storytelling */
+    section {
       min-height: 100vh;
       display: flex;
+      flex-direction: column;
       justify-content: center;
+      padding: 60px 0;
+      position: relative;
     }
 
-    main.shell {
-      width: 100%;
-      max-width: var(--max-width);
-      padding: 24px 16px 40px;
-    }
-
-    @media (min-width: 768px) {
-      main.shell {
-        padding: 32px 24px 56px;
+    /* Reduce height on mobile for better flow */
+    @media (max-width: 640px) {
+      section {
+        min-height: auto;
+        padding: 80px 0;
       }
     }
 
-    /* Basic layout */
-
-    .top-bar {
-      display: flex;
-      justify-content: center;
-      margin-bottom: 20px;
-      font-size: 13px;
-      color: var(--text-muted);
-      gap: 16px;
-      flex-wrap: wrap;
-    }
-
-    .top-bar a {
-      text-decoration: none;
-      color: var(--text-muted);
-      padding: 4px 10px;
-      border-radius: 999px;
-      border: 1px solid transparent;
-      transition: all 0.15s ease-out;
-    }
-
-    .top-bar a:hover {
-      border-color: rgba(148, 163, 184, 0.5);
-      color: var(--text-main);
-      background: rgba(15, 23, 42, 0.95);
-    }
-
-    section {
-      margin-bottom: 28px;
-    }
-
-    /* Hero */
-
-    .hero {
+    /* ============================================
+       SCREEN 1: THE HOOK
+       ============================================ */
+    .screen-hook {
       text-align: center;
-      padding: 24px 16px 22px;
-      border-radius: 22px;
-      background: radial-gradient(circle at top left, #1d4ed8 0, #020617 55%);
-      border: 1px solid rgba(31, 41, 55, 0.9);
-      box-shadow: var(--shadow);
+      background: radial-gradient(ellipse at center top, #1e3a5f 0%, var(--bg) 60%);
     }
 
-    .hero-tag {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 4px 10px;
-      border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.5);
-      background: rgba(15, 23, 42, 0.85);
-      font-size: 11px;
+    .hook-pretitle {
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
       color: var(--text-muted);
-      margin-bottom: 10px;
+      margin-bottom: 24px;
+      opacity: 0.8;
     }
 
-    .hero-tag span.dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 999px;
-      background: #fbbf24;
-      box-shadow: 0 0 0 6px rgba(251, 191, 36, 0.22);
-    }
-
-    .hero h1 {
-      margin: 0 0 8px;
-      font-size: 26px;
-      line-height: 1.15;
+    .hook-title {
+      font-size: clamp(2.5rem, 8vw, 4.5rem);
+      font-weight: 700;
+      line-height: 1.1;
       letter-spacing: -0.03em;
+      margin-bottom: 20px;
     }
 
-    @media (min-width: 768px) {
-      .hero h1 {
-        font-size: 32px;
-      }
-    }
-
-    .hero h1 span.highlight {
-      background: linear-gradient(120deg, #fbbf24, #fb7185);
+    .hook-title .line2 {
+      background: linear-gradient(135deg, var(--accent-amber), var(--accent-rose));
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
     }
 
-    .hero-line {
-      font-size: 14px;
+    .hook-subtitle {
+      font-size: 1.25rem;
       color: var(--text-muted);
-      margin-bottom: 6px;
+      max-width: 500px;
+      margin: 0 auto 40px;
     }
 
-    .hero-line strong {
-      color: #e5e7eb;
-      font-weight: 500;
-    }
-
-    .hero-buttons {
-      margin-top: 14px;
+    .scroll-indicator {
       display: flex;
-      justify-content: center;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-
-    .btn-main,
-    .btn-soft {
-      border-radius: 999px;
-      padding: 8px 16px;
-      font-size: 13px;
-      text-decoration: none;
-      border: 1px solid transparent;
-      display: inline-flex;
+      flex-direction: column;
       align-items: center;
-      gap: 6px;
-      cursor: pointer;
-      transition: all 0.15s ease-out;
-      white-space: nowrap;
+      gap: 8px;
+      color: var(--text-dim);
+      font-size: 13px;
+      animation: pulse 2s ease-in-out infinite;
     }
 
-    .btn-main {
-      background: linear-gradient(120deg, #22c55e, #38bdf8);
-      color: #020617;
-      font-weight: 600;
-      box-shadow: 0 12px 26px rgba(15, 23, 42, 0.9);
+    .scroll-indicator svg {
+      width: 24px;
+      height: 24px;
+      stroke: currentColor;
     }
 
-    .btn-main:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 16px 36px rgba(15, 23, 42, 1);
+    @keyframes pulse {
+      0%, 100% { opacity: 0.5; transform: translateY(0); }
+      50% { opacity: 1; transform: translateY(4px); }
     }
 
-    .btn-soft {
-      border-color: rgba(148, 163, 184, 0.5);
+    /* ============================================
+       SCREEN 2: THE REVEAL
+       ============================================ */
+    .screen-reveal {
+      text-align: center;
+    }
+
+    .crisis-list {
+      font-size: clamp(1.5rem, 5vw, 2.5rem);
+      font-weight: 300;
+      color: var(--text-muted);
+      margin-bottom: 40px;
+      line-height: 1.8;
+    }
+
+    .crisis-list span {
+      display: block;
+      opacity: 0.7;
+    }
+
+    .reveal-statement {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      margin-bottom: 50px;
+    }
+
+    .reveal-statement strong {
       color: var(--text-main);
-      background: rgba(15, 23, 42, 0.75);
     }
 
-    .btn-soft:hover {
-      background: rgba(15, 23, 42, 0.95);
+    .big-three {
+      margin-bottom: 30px;
     }
 
-    /* Section headers */
+    .big-three .line {
+      font-size: clamp(1.8rem, 6vw, 3.5rem);
+      font-weight: 700;
+      line-height: 1.3;
+      letter-spacing: -0.02em;
+    }
+
+    .big-three .line:nth-child(1) { color: var(--text-main); }
+    .big-three .line:nth-child(2) { color: var(--accent-blue); }
+    .big-three .line:nth-child(3) { color: var(--accent-amber); }
+
+    .reveal-note {
+      font-size: 1rem;
+      color: var(--text-dim);
+      margin-top: 30px;
+    }
+
+    /* ============================================
+       SCREEN 3: THE TRAP (Why it's hard)
+       ============================================ */
+    .screen-trap {
+      background: linear-gradient(180deg, var(--bg) 0%, #0c1222 100%);
+    }
 
     .section-label {
-      font-size: 11px;
-      letter-spacing: 0.16em;
+      font-size: 12px;
       text-transform: uppercase;
-      color: var(--text-muted);
-      margin-bottom: 4px;
+      letter-spacing: 0.15em;
+      color: var(--accent-blue);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .section-label::before {
+      content: '';
+      width: 20px;
+      height: 1px;
+      background: var(--accent-blue);
     }
 
     .section-title {
-      margin: 0 0 6px;
-      font-size: 20px;
+      font-size: clamp(1.75rem, 5vw, 2.5rem);
+      font-weight: 700;
+      margin-bottom: 16px;
       letter-spacing: -0.02em;
     }
 
     .section-intro {
-      margin: 0;
-      font-size: 14px;
+      font-size: 1.1rem;
       color: var(--text-muted);
+      margin-bottom: 40px;
+      max-width: 600px;
     }
 
-    /* Cards and grids */
+    .trap-cards {
+      display: grid;
+      gap: 16px;
+    }
 
-    .card {
+    .trap-card {
       background: var(--card);
-      border-radius: var(--radius);
       border: 1px solid var(--border);
-      padding: 14px 14px 12px;
+      border-radius: var(--radius);
+      padding: 24px;
     }
 
-    .problem-summary {
-      margin-top: 12px;
-      text-align: center;
-      font-size: 15px;
-      line-height: 1.4;
+    .trap-card-icon {
+      font-size: 2rem;
+      margin-bottom: 12px;
     }
 
-    .problem-summary span.key {
-      color: var(--accent);
+    .trap-card h3 {
+      font-size: 1.1rem;
       font-weight: 600;
+      margin-bottom: 8px;
+      color: var(--text-main);
     }
 
-    .chip-row {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
+    .trap-card p {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+    }
+
+    .trap-card .solution {
+      font-size: 0.9rem;
+      color: var(--accent-green);
+      padding-top: 12px;
+      border-top: 1px solid var(--border);
+    }
+
+    .trap-card .solution::before {
+      content: '✓ ';
+    }
+
+    .trap-note {
+      text-align: center;
+      margin-top: 40px;
+      font-size: 1.25rem;
+      color: var(--text-main);
+      font-weight: 500;
+    }
+
+    .trap-note span {
+      color: var(--accent-green);
+    }
+
+    /* ============================================
+       SCREEN 4: THE HOPE
+       ============================================ */
+    .screen-hope {
+      background: radial-gradient(ellipse at center bottom, #0a2f23 0%, var(--bg) 60%);
+    }
+
+    .hope-header {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .success-grid {
+      display: grid;
+      gap: 20px;
+    }
+
+    @media (min-width: 640px) {
+      .success-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .success-card {
+      background: linear-gradient(135deg, rgba(34, 197, 94, 0.1) 0%, rgba(15, 23, 42, 0.8) 100%);
+      border: 1px solid rgba(34, 197, 94, 0.3);
+      border-radius: var(--radius);
+      padding: 28px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .success-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      background: var(--accent-green);
+    }
+
+    .success-badge {
+      display: inline-flex;
+      align-items: center;
       gap: 6px;
-      margin-top: 10px;
+      background: rgba(34, 197, 94, 0.2);
+      color: var(--accent-green);
       font-size: 11px;
-    }
-
-    .chip {
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
       padding: 4px 10px;
       border-radius: 999px;
-      border: 1px solid var(--border);
-      background: rgba(15, 23, 42, 0.8);
+      margin-bottom: 16px;
+    }
+
+    .success-card h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+
+    .success-card p {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+
+    .success-card .year {
+      font-size: 0.85rem;
+      color: var(--text-dim);
+    }
+
+    .hope-conclusion {
+      text-align: center;
+      margin-top: 50px;
+    }
+
+    .hope-conclusion h3 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    .hope-conclusion p {
+      font-size: 1.1rem;
       color: var(--text-muted);
     }
 
-    .grid-3 {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 10px;
-      margin-top: 14px;
+    /* ============================================
+       SCREEN 5: THE PATH
+       ============================================ */
+    .screen-path {
+      background: linear-gradient(180deg, var(--bg) 0%, #0a1628 100%);
     }
 
-    @media (min-width: 720px) {
-      .grid-3 {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
+    .path-header {
+      margin-bottom: 40px;
+    }
+
+    .tools-grid {
+      display: grid;
+      gap: 16px;
+    }
+
+    @media (min-width: 640px) {
+      .tools-grid {
+        grid-template-columns: repeat(2, 1fr);
       }
     }
 
-    .pill-card {
-      background: var(--bg-soft);
-      border-radius: var(--radius);
+    .tool-card {
+      background: var(--card);
       border: 1px solid var(--border);
-      padding: 12px 12px 10px;
-      font-size: 13px;
-    }
-
-    .pill-card .icon {
-      font-size: 18px;
-      margin-bottom: 4px;
-    }
-
-    .pill-card h3 {
-      margin: 0 0 4px;
-      font-size: 14px;
-    }
-
-    .pill-card p {
-      margin: 0;
-      font-size: 13px;
-      color: var(--text-muted);
-    }
-
-    .grid-2 {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 10px;
-      margin-top: 12px;
-    }
-
-    @media (min-width: 720px) {
-      .grid-2 {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-    }
-
-    .solution-card {
-      background: var(--bg-soft);
       border-radius: var(--radius);
-      border: 1px solid var(--border);
-      padding: 12px 12px 10px;
-      font-size: 13px;
+      padding: 24px;
+      transition: transform 0.2s ease, border-color 0.2s ease;
     }
 
-    .solution-card .icon {
-      font-size: 18px;
-      margin-bottom: 4px;
+    .tool-card:hover {
+      transform: translateY(-2px);
+      border-color: var(--accent-blue);
     }
 
-    .solution-card h3 {
-      margin: 0 0 4px;
-      font-size: 14px;
+    .tool-card-icon {
+      font-size: 1.75rem;
+      margin-bottom: 12px;
     }
 
-    .solution-card ul {
-      margin: 4px 0 0;
-      padding-left: 16px;
-      font-size: 12px;
-      color: var(--text-muted);
-    }
-
-    .solution-card ul li {
-      margin-bottom: 2px;
-    }
-
-    /* You section */
-
-    .you-card {
-      background: linear-gradient(145deg, rgba(56, 189, 248, 0.16), rgba(15, 23, 42, 0.96));
-      border-radius: 20px;
-      border: 1px solid rgba(37, 99, 235, 0.7);
-      padding: 14px 14px 12px;
-      font-size: 13px;
-      box-shadow: var(--shadow);
-    }
-
-    .you-card h3 {
-      margin: 0 0 6px;
-      font-size: 15px;
-    }
-
-    .you-card p {
-      margin: 0 0 6px;
-      font-size: 13px;
-      color: #e5e7eb;
-    }
-
-    .checklist {
-      list-style: none;
-      padding: 0;
-      margin: 6px 0 0;
-      font-size: 13px;
-    }
-
-    .checklist li {
-      display: flex;
-      gap: 8px;
-      align-items: flex-start;
+    .tool-card h3 {
+      font-size: 1rem;
+      font-weight: 600;
       margin-bottom: 6px;
     }
 
-    .check {
-      font-size: 14px;
-      opacity: 0.9;
+    .tool-card p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 8px;
     }
 
-    /* Footer */
+    .tool-card .example {
+      font-size: 0.8rem;
+      color: var(--accent-blue);
+    }
 
-    footer {
-      margin-top: 18px;
-      padding-top: 10px;
-      border-top: 1px solid var(--border);
-      font-size: 11px;
-      color: var(--text-muted);
+    .path-statement {
+      text-align: center;
+      margin-top: 50px;
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--accent-blue);
+    }
+
+    /* ============================================
+       SCREEN 6: YOUR PART (CTA)
+       ============================================ */
+    .screen-action {
+      background: radial-gradient(ellipse at center, #1a1f35 0%, var(--bg) 70%);
       text-align: center;
     }
 
-    footer span {
-      color: #e5e7eb;
+    .action-header {
+      margin-bottom: 50px;
+    }
+
+    .action-header h2 {
+      font-size: clamp(2rem, 6vw, 3rem);
+      font-weight: 700;
+      margin-bottom: 16px;
+      letter-spacing: -0.02em;
+    }
+
+    .action-header p {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    .action-list {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      max-width: 500px;
+      margin: 0 auto 50px;
+      text-align: left;
+    }
+
+    .action-item {
+      display: flex;
+      gap: 16px;
+      padding: 20px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+    }
+
+    .action-number {
+      flex-shrink: 0;
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, var(--accent-amber), var(--accent-rose));
+      color: var(--bg);
+      font-weight: 700;
+      font-size: 1rem;
+      border-radius: 50%;
+    }
+
+    .action-content h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .action-content p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .cta-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      font-size: 1rem;
+      font-weight: 600;
+      text-decoration: none;
+      border-radius: 999px;
+      transition: all 0.2s ease;
+      cursor: pointer;
+      border: none;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent-amber), var(--accent-rose));
+      color: var(--bg);
+      box-shadow: 0 8px 30px rgba(251, 191, 36, 0.3);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 40px rgba(251, 191, 36, 0.4);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--text-main);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--card);
+      border-color: var(--text-muted);
+    }
+
+    /* ============================================
+       FOOTER
+       ============================================ */
+    footer {
+      padding: 40px 24px;
+      text-align: center;
+      border-top: 1px solid var(--border);
+    }
+
+    .footer-message {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      max-width: 500px;
+      margin: 0 auto 20px;
+    }
+
+    .footer-message strong {
+      color: var(--text-main);
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      font-size: 0.85rem;
+    }
+
+    .footer-links a {
+      color: var(--text-dim);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .footer-links a:hover {
+      color: var(--text-main);
+    }
+
+    /* ============================================
+       ANIMATIONS
+       ============================================ */
+    @media (prefers-reduced-motion: no-preference) {
+      .fade-in {
+        opacity: 0;
+        transform: translateY(20px);
+        animation: fadeIn 0.8s ease forwards;
+      }
+
+      @keyframes fadeIn {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .delay-1 { animation-delay: 0.1s; }
+      .delay-2 { animation-delay: 0.2s; }
+      .delay-3 { animation-delay: 0.3s; }
+      .delay-4 { animation-delay: 0.4s; }
+    }
+
+    /* ============================================
+       SHARE MODAL (Hidden by default)
+       ============================================ */
+    .share-modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.8);
+      z-index: 100;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+
+    .share-modal.active {
+      display: flex;
+    }
+
+    .share-modal-content {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 32px;
+      max-width: 400px;
+      width: 100%;
+      text-align: center;
+    }
+
+    .share-modal h3 {
+      font-size: 1.25rem;
+      margin-bottom: 20px;
+    }
+
+    .share-options {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .share-btn {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      border: 1px solid var(--border);
+      background: var(--bg);
+      color: var(--text-main);
+      font-size: 1.25rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .share-btn:hover {
+      background: var(--accent-blue);
+      border-color: var(--accent-blue);
+      color: var(--bg);
+    }
+
+    .share-url {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+
+    .share-url input {
+      flex: 1;
+      padding: 10px 14px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: var(--text-main);
+      font-size: 0.9rem;
+    }
+
+    .share-url button {
+      padding: 10px 16px;
+      background: var(--accent-blue);
+      border: none;
+      border-radius: 8px;
+      color: var(--bg);
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .close-modal {
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      cursor: pointer;
+    }
+
+    .close-modal:hover {
+      color: var(--text-main);
     }
   </style>
 </head>
 <body>
-  <main class="shell">
-    <!-- Tiny nav -->
-    <div class="top-bar">
-      <a href="#problem">Problem</a>
-      <a href="#solutions">Solutions</a>
-      <a href="#you">What you can do</a>
-    </div>
-
-    <!-- HERO -->
-    <section class="hero">
-      <div class="hero-tag">
-        <span class="dot"></span>
-        The world’s biggest problem — in simple words
-      </div>
-      <h1>
-        We upgraded our <span class="highlight">power</span>,<br />
-        not our <span class="highlight">wisdom together</span>.
+  <!-- SCREEN 1: THE HOOK -->
+  <section class="screen-hook">
+    <div class="container">
+      <p class="hook-pretitle fade-in">A 2-minute read that might change how you see everything</p>
+      <h1 class="hook-title fade-in delay-1">
+        The World's Biggest Problem<br />
+        <span class="line2">Is Not What You Think</span>
       </h1>
-      <p class="hero-line">
-        We share one planet. We now have god-level tools.
+      <p class="hook-subtitle fade-in delay-2">
+        It's not climate change. It's not AI. It's not any single crisis. It's why we can't solve any of them.
       </p>
-      <p class="hero-line">
-        But we still think and fight like small tribes.
-      </p>
-
-      <div class="hero-buttons">
-        <a href="#problem" class="btn-main">
-          See the core problem
-        </a>
-        <a href="#solutions" class="btn-soft">
-          Jump to solutions
-        </a>
+      <div class="scroll-indicator fade-in delay-3">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
+          <path d="M12 5v14M5 12l7 7 7-7" />
+        </svg>
+        Scroll to discover
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- PROBLEM -->
-    <section id="problem">
-      <div class="section-label">01 · The problem</div>
-      <h2 class="section-title">The problem in one glance</h2>
-      <p class="section-intro">
-        This is the root issue behind climate chaos, wars, and risky technology.
+  <!-- SCREEN 2: THE REVEAL -->
+  <section class="screen-reveal" id="problem">
+    <div class="container">
+      <div class="crisis-list">
+        <span>Climate change.</span>
+        <span>Artificial intelligence.</span>
+        <span>Pandemics.</span>
+        <span>Nuclear weapons.</span>
+      </div>
+      
+      <p class="reveal-statement">
+        They look like different problems.<br />
+        <strong>They're not.</strong>
       </p>
 
-      <div class="card">
-        <p class="problem-summary">
-          We are <span class="key">8 billion people</span> sharing one home,
-          with <span class="key">huge power</span> to change it —
-          but <span class="key">no shared plan</span> or habit of thinking long-term together.
+      <div class="big-three">
+        <div class="line">8 billion people.</div>
+        <div class="line">God-level tools.</div>
+        <div class="line">Stone-age coordination.</div>
+      </div>
+
+      <p class="reveal-note">
+        Every major crisis is the same problem wearing different masks:<br />
+        We can't cooperate as fast as we can create.
+      </p>
+    </div>
+  </section>
+
+  <!-- SCREEN 3: THE TRAP -->
+  <section class="screen-trap" id="why">
+    <div class="container">
+      <div class="section-label">Why this is hard</div>
+      <h2 class="section-title">It's not that humans are bad.</h2>
+      <p class="section-intro">
+        We're caught in coordination traps — situations where individual logic leads to collective disaster. But once you see the trap, you can escape it.
+      </p>
+
+      <div class="trap-cards">
+        <div class="trap-card">
+          <div class="trap-card-icon">🌍</div>
+          <h3>The Sacrifice Trap</h3>
+          <p>Every nation wants a clean planet. But each fears being the only one to sacrifice while others keep polluting.</p>
+          <div class="solution">This is exactly what we solved with the ozone layer — everyone moved together.</div>
+        </div>
+
+        <div class="trap-card">
+          <div class="trap-card-icon">🏁</div>
+          <h3>The Race Trap</h3>
+          <p>Every AI lab wants safety. But each fears falling behind if they slow down while competitors race ahead.</p>
+          <div class="solution">Solution: Collective agreements, shared standards — we're building these now.</div>
+        </div>
+
+        <div class="trap-card">
+          <div class="trap-card-icon">🌊</div>
+          <h3>The Commons Trap</h3>
+          <p>Everyone wants sustainable oceans. But each fisher catches more before others do — depleting what they all need.</p>
+          <div class="solution">Communities worldwide manage commons successfully using clear rules and monitoring.</div>
+        </div>
+      </div>
+
+      <p class="trap-note">
+        These traps have <span>known solutions</span>.<br />
+        The challenge is implementing them at global scale.
+      </p>
+    </div>
+  </section>
+
+  <!-- SCREEN 4: THE HOPE -->
+  <section class="screen-hope" id="hope">
+    <div class="container">
+      <div class="hope-header">
+        <div class="section-label">Proof it's possible</div>
+        <h2 class="section-title">We've done this before.</h2>
+        <p class="section-intro">
+          Coordination is a skill. And we're getting better at it.
         </p>
-        <div class="chip-row">
-          <div class="chip">🌍 One planet</div>
-          <div class="chip">⚙️ God-level tools</div>
-          <div class="chip">🤯 Weak coordination</div>
+      </div>
+
+      <div class="success-grid">
+        <div class="success-card">
+          <div class="success-badge">✓ Solved</div>
+          <h3>The Ozone Layer</h3>
+          <p>Was dying from CFCs. In 1987, every nation agreed to fix it. It's healing now — will fully recover by 2050.</p>
+          <span class="year">Montreal Protocol, 1987</span>
+        </div>
+
+        <div class="success-card">
+          <div class="success-badge">✓ Eliminated</div>
+          <h3>Smallpox</h3>
+          <p>Killed 300 million in the 20th century. We eliminated it forever through coordinated global vaccination.</p>
+          <span class="year">Declared eradicated, 1980</span>
+        </div>
+
+        <div class="success-card">
+          <div class="success-badge">✓ Transformed</div>
+          <h3>European Peace</h3>
+          <p>Centuries of devastating wars. Since 1945, the longest peace in European history — built through integration.</p>
+          <span class="year">75+ years of peace</span>
+        </div>
+
+        <div class="success-card">
+          <div class="success-badge">🔄 In Progress</div>
+          <h3>Clean Energy</h3>
+          <p>Solar is now the cheapest energy in history. EVs are crossing the adoption threshold. The economics have flipped.</p>
+          <span class="year">Accelerating since 2020</span>
         </div>
       </div>
 
-      <div class="grid-3" aria-label="Three simple parts of the problem">
-        <div class="pill-card">
-          <div class="icon">🔥</div>
-          <h3>We harm our home</h3>
-          <p>
-            We burn, dig and dump more than Earth can safely handle.
-          </p>
-        </div>
-        <div class="pill-card">
-          <div class="icon">🏁</div>
-          <h3>The race is rigged</h3>
-          <p>
-            If one country or company slows down, others race ahead.
-          </p>
-        </div>
-        <div class="pill-card">
-          <div class="icon">📡</div>
-          <h3>Reality is fractured</h3>
-          <p>
-            Different feeds. Different “facts”. Hard to agree on what’s real.
-          </p>
-        </div>
+      <div class="hope-conclusion">
+        <h3>The pattern is clear.</h3>
+        <p>When we create the right structures, coordination happens. The question is: can we do it fast enough?</p>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- WHY IT KEEPS HAPPENING -->
-    <section id="why">
-      <div class="section-label">02 · Why this keeps happening</div>
-      <h2 class="section-title">Our minds, rules and feeds are out of sync</h2>
-      <p class="section-intro">
-        The problem is not that humans are evil. It’s that the system nudges us the wrong way.
-      </p>
-
-      <div class="grid-3">
-        <div class="pill-card">
-          <div class="icon">🧠</div>
-          <h3>Short-term brains</h3>
-          <p>
-            We feel “now” much more than “30 years from now”.
-          </p>
-        </div>
-        <div class="pill-card">
-          <div class="icon">🏛️</div>
-          <h3>Old rules</h3>
-          <p>
-            Laws and institutions move slow. Tech moves very fast.
-          </p>
-        </div>
-        <div class="pill-card">
-          <div class="icon">📱</div>
-          <h3>Tricky feeds</h3>
-          <p>
-            Algorithms reward clicks and anger, not calm understanding.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- SOLUTIONS -->
-    <section id="solutions">
-      <div class="section-label">03 · The solutions (big picture)</div>
-      <h2 class="section-title">Four moves that actually help</h2>
-      <p class="section-intro">
-        There’s no magic button. But these four levers, pulled together, change the direction.
-      </p>
-
-      <div class="grid-2" aria-label="Four solution areas">
-        <div class="solution-card">
-          <div class="icon">👀</div>
-          <h3>1. See more clearly</h3>
-          <ul>
-            <li>Support honest, slower, deeper information.</li>
-            <li>Pause before sharing: “Is this true? Who gains if I believe it?”</li>
-          </ul>
-        </div>
-
-        <div class="solution-card">
-          <div class="icon">🧩</div>
-          <h3>2. Fix the rules of the game</h3>
-          <ul>
-            <li>Reward long-term good, not just quick profit.</li>
-            <li>Push for climate, safety and fairness rules that apply to everyone.</li>
-          </ul>
-        </div>
-
-        <div class="solution-card">
-          <div class="icon">💚</div>
-          <h3>3. Grow up on the inside</h3>
-          <ul>
-            <li>Practice calm, listening and empathy, especially in conflict.</li>
-            <li>Make mental health work (therapy, coaching, reflection) normal.</li>
-          </ul>
-        </div>
-
-        <div class="solution-card">
-          <div class="icon">🤝</div>
-          <h3>4. Act together</h3>
-          <ul>
-            <li>Join or support groups working on climate, democracy or tech safety.</li>
-            <li>Vote, show up locally, and stay engaged after the headlines fade.</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- YOU -->
-    <section id="you">
-      <div class="section-label">04 · Your part</div>
-      <h2 class="section-title">Three things you can do this week</h2>
-
-      <div class="you-card">
-        <h3>Small actions. Big direction change.</h3>
-        <p>
-          You don’t have to “save the world”. You can help bend the line we’re on.
+  <!-- SCREEN 5: THE PATH -->
+  <section class="screen-path" id="tools">
+    <div class="container">
+      <div class="path-header">
+        <div class="section-label">The tools are emerging</div>
+        <h2 class="section-title">New ways to coordinate at scale.</h2>
+        <p class="section-intro">
+          Technology isn't just the problem — it's also part of the solution.
         </p>
-        <ul class="checklist">
-          <li>
-            <span class="check">☐</span>
-            <span>Pick one issue (climate, democracy, AI, mental health) and follow one serious group working on it.</span>
-          </li>
-          <li>
-            <span class="check">☐</span>
-            <span>Clean up your information diet: remove one source that only makes you angry; add one that makes you wiser.</span>
-          </li>
-          <li>
-            <span class="check">☐</span>
-            <span>Have one honest conversation: “What kind of future do you want us to move toward?” Then really listen.</span>
-          </li>
-        </ul>
       </div>
-    </section>
 
-    <footer>
-      This page is a simple map of the “meta-crisis”:
-      <span>our power is global; our wisdom and coordination are still catching up.</span>
-    </footer>
-  </main>
+      <div class="tools-grid">
+        <div class="tool-card">
+          <div class="tool-card-icon">🗣️</div>
+          <h3>AI-Assisted Deliberation</h3>
+          <p>AI helps thousands of people discuss and find consensus simultaneously.</p>
+          <span class="example">Taiwan's vTaiwan found hidden agreement on Uber regulation</span>
+        </div>
+
+        <div class="tool-card">
+          <div class="tool-card-icon">⚖️</div>
+          <h3>Democratic Funding</h3>
+          <p>New mechanisms let communities fund public goods fairly — small voices amplified.</p>
+          <span class="example">Gitcoin has distributed $50M+ for open source projects</span>
+        </div>
+
+        <div class="tool-card">
+          <div class="tool-card-icon">🏛️</div>
+          <h3>Citizens' Assemblies</h3>
+          <p>Random citizens deliberating on complex issues — no partisan capture.</p>
+          <span class="example">Ireland used this for abortion and marriage referendums</span>
+        </div>
+
+        <div class="tool-card">
+          <div class="tool-card-icon">📈</div>
+          <h3>Prediction Markets</h3>
+          <p>Aggregate knowledge from many minds to forecast and decide better.</p>
+          <span class="example">Metaculus outperforms expert panels on many questions</span>
+        </div>
+      </div>
+
+      <p class="path-statement">
+        The coordination gap is closing.
+      </p>
+    </div>
+  </section>
+
+  <!-- SCREEN 6: YOUR PART -->
+  <section class="screen-action" id="action">
+    <div class="container">
+      <div class="action-header">
+        <h2>You Can Help Close the Gap</h2>
+        <p>You don't have to "save the world." You can help bend the direction we're heading.</p>
+      </div>
+
+      <div class="action-list">
+        <div class="action-item">
+          <div class="action-number">1</div>
+          <div class="action-content">
+            <h3>Understand the Pattern</h3>
+            <p>You just did. Now you'll see it everywhere — and understanding is the first step to solving.</p>
+          </div>
+        </div>
+
+        <div class="action-item">
+          <div class="action-number">2</div>
+          <div class="action-content">
+            <h3>Share This Story</h3>
+            <p>Common knowledge of the problem is part of the solution. When enough people see it, change accelerates.</p>
+          </div>
+        </div>
+
+        <div class="action-item">
+          <div class="action-number">3</div>
+          <div class="action-content">
+            <h3>Join the Movement</h3>
+            <p>Millions are already working on this. Find your way in — through climate action, AI safety, democracy reform, or local community.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="cta-buttons">
+        <button class="btn btn-primary" onclick="openShareModal()">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8M16 6l-4-4-4 4M12 2v13" />
+          </svg>
+          Share This
+        </button>
+        <a href="https://www.effectivealtruism.org/" target="_blank" class="btn btn-secondary">
+          Find Organizations →
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p class="footer-message">
+      This page tells the story of the <strong>"coordination gap"</strong> — the growing distance between our technological power and our ability to coordinate its use wisely. The gap is the meta-crisis behind every crisis.
+    </p>
+    <div class="footer-links">
+      <a href="https://github.com" target="_blank">View Source</a>
+      <a href="#problem">Back to Top</a>
+    </div>
+  </footer>
+
+  <!-- SHARE MODAL -->
+  <div class="share-modal" id="shareModal">
+    <div class="share-modal-content">
+      <h3>Share This Story</h3>
+      <div class="share-options">
+        <button class="share-btn" onclick="shareTwitter()" title="Share on Twitter">𝕏</button>
+        <button class="share-btn" onclick="shareLinkedIn()" title="Share on LinkedIn">in</button>
+        <button class="share-btn" onclick="shareFacebook()" title="Share on Facebook">f</button>
+        <button class="share-btn" onclick="shareEmail()" title="Share via Email">✉</button>
+      </div>
+      <div class="share-url">
+        <input type="text" id="shareUrl" readonly value="" />
+        <button onclick="copyUrl()">Copy</button>
+      </div>
+      <button class="close-modal" onclick="closeShareModal()">Close</button>
+    </div>
+  </div>
+
+  <script>
+    // Set share URL
+    document.getElementById('shareUrl').value = window.location.href;
+
+    // Share modal functions
+    function openShareModal() {
+      document.getElementById('shareModal').classList.add('active');
+    }
+
+    function closeShareModal() {
+      document.getElementById('shareModal').classList.remove('active');
+    }
+
+    // Close modal on click outside
+    document.getElementById('shareModal').addEventListener('click', function(e) {
+      if (e.target === this) closeShareModal();
+    });
+
+    // Share functions
+    const shareText = "The world's biggest problem isn't climate change or AI — it's that we can't coordinate on solving either. 8 billion people. God-level tools. Stone-age coordination.";
+    
+    function shareTwitter() {
+      window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(window.location.href)}`, '_blank');
+    }
+
+    function shareLinkedIn() {
+      window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(window.location.href)}`, '_blank');
+    }
+
+    function shareFacebook() {
+      window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href)}`, '_blank');
+    }
+
+    function shareEmail() {
+      window.location.href = `mailto:?subject=${encodeURIComponent("The World's Biggest Problem")}&body=${encodeURIComponent(shareText + "\n\n" + window.location.href)}`;
+    }
+
+    function copyUrl() {
+      const input = document.getElementById('shareUrl');
+      input.select();
+      document.execCommand('copy');
+      alert('Link copied!');
+    }
+
+    // Close modal with Escape key
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeShareModal();
+    });
+  </script>
 </body>
 </html>
