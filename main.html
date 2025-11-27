@@ -1,0 +1,998 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>The World’s Biggest Problem — And What We Can Do</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="description"
+    content="A simple explanation of the world’s biggest problem — and the practical steps we can take together to solve it."
+  />
+  <style>
+    :root {
+      --bg: #050816;
+      --bg-soft: #0b1020;
+      --card: #111827;
+      --accent: #38bdf8;
+      --accent-soft: rgba(56, 189, 248, 0.1);
+      --text-main: #f9fafb;
+      --text-muted: #9ca3af;
+      --border-subtle: #1f2937;
+      --danger: #fb7185;
+      --success: #4ade80;
+      --warn: #fbbf24;
+      --radius-lg: 18px;
+      --radius-pill: 999px;
+      --shadow-soft: 0 20px 40px rgba(15, 23, 42, 0.65);
+      --max-width: 980px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+        "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #0b1120 0, #020617 40%, #000 100%);
+      color: var(--text-main);
+      scroll-behavior: smooth;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    .page-shell {
+      padding: 24px 16px 40px;
+    }
+
+    @media (min-width: 768px) {
+      .page-shell {
+        padding: 32px 24px 56px;
+      }
+    }
+
+    .inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+
+    .logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .logo-badge {
+      width: 30px;
+      height: 30px;
+      border-radius: 12px;
+      background: radial-gradient(circle at 20% 0, #38bdf8, #1d4ed8 55%, #020617 100%);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      box-shadow: 0 10px 25px rgba(15, 23, 42, 0.8);
+    }
+
+    .logo-text {
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      font-size: 13px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    nav {
+      display: flex;
+      gap: 10px;
+      font-size: 13px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--text-muted);
+      padding: 6px 12px;
+      border-radius: var(--radius-pill);
+      border: 1px solid transparent;
+      transition: all 0.15s ease-out;
+    }
+
+    nav a:hover {
+      color: var(--text-main);
+      border-color: rgba(148, 163, 184, 0.35);
+      background: rgba(15, 23, 42, 0.85);
+    }
+
+    /* Hero */
+
+    .hero {
+      border-radius: 24px;
+      padding: 24px 20px 28px;
+      background: radial-gradient(circle at top left, #1d4ed8 0, #020617 55%, #020617 100%);
+      box-shadow: var(--shadow-soft);
+      border: 1px solid rgba(15, 23, 42, 0.9);
+      margin-bottom: 32px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    @media (min-width: 840px) {
+      .hero {
+        display: grid;
+        grid-template-columns: 3fr 2.5fr;
+        gap: 32px;
+        padding: 32px 28px 34px;
+      }
+    }
+
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 4px 10px 4px 4px;
+      border-radius: var(--radius-pill);
+      background: rgba(15, 23, 42, 0.68);
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      margin-bottom: 12px;
+      font-size: 12px;
+      color: var(--text-muted);
+      backdrop-filter: blur(12px);
+    }
+
+    .pulse-dot {
+      width: 18px;
+      height: 18px;
+      border-radius: 999px;
+      background: radial-gradient(circle, #f97316 0, #b91c1c 50%, transparent 70%);
+      position: relative;
+      flex-shrink: 0;
+    }
+
+    .pulse-dot::after {
+      content: "";
+      position: absolute;
+      inset: 1px;
+      border-radius: inherit;
+      background: #020617;
+    }
+
+    .hero h1 {
+      font-size: 28px;
+      line-height: 1.15;
+      margin: 0 0 10px;
+      letter-spacing: -0.03em;
+    }
+
+    @media (min-width: 768px) {
+      .hero h1 {
+        font-size: 36px;
+      }
+    }
+
+    .hero h1 span.accent {
+      background: linear-gradient(120deg, #facc15, #f97316, #fb7185);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero-sub {
+      font-size: 15px;
+      color: var(--text-muted);
+      max-width: 36rem;
+      margin-bottom: 18px;
+    }
+
+    .hero-sub strong {
+      color: #e5e7eb;
+      font-weight: 500;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .btn-primary,
+    .btn-ghost {
+      border-radius: var(--radius-pill);
+      padding: 9px 16px;
+      border: 1px solid transparent;
+      font-size: 14px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.15s ease-out;
+      white-space: nowrap;
+    }
+
+    .btn-primary {
+      background: linear-gradient(120deg, #38bdf8, #22c55e);
+      color: #020617;
+      font-weight: 600;
+      box-shadow: 0 14px 30px rgba(15, 23, 42, 0.8);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 18px 40px rgba(15, 23, 42, 1);
+    }
+
+    .btn-ghost {
+      border-color: rgba(148, 163, 184, 0.55);
+      color: var(--text-main);
+      background: rgba(15, 23, 42, 0.55);
+    }
+
+    .btn-ghost:hover {
+      background: rgba(15, 23, 42, 0.9);
+    }
+
+    .hero-footnote {
+      font-size: 12px;
+      color: #e5e7eb;
+      opacity: 0.8;
+      margin-top: 4px;
+    }
+
+    .hero-right {
+      margin-top: 20px;
+    }
+
+    @media (min-width: 840px) {
+      .hero-right {
+        margin-top: 0;
+      }
+    }
+
+    .big-problem-card {
+      background: rgba(15, 23, 42, 0.82);
+      border-radius: 18px;
+      padding: 14px 14px 12px;
+      border: 1px solid rgba(51, 65, 85, 0.9);
+      color: var(--text-muted);
+      font-size: 13px;
+      margin-bottom: 10px;
+    }
+
+    .big-problem-card h2 {
+      margin: 0 0 4px;
+      font-size: 15px;
+      color: #e5e7eb;
+    }
+
+    .big-problem-card strong {
+      color: #f97316;
+      font-weight: 600;
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 6px;
+    }
+
+    .pill {
+      font-size: 11px;
+      padding: 4px 8px;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(75, 85, 99, 0.9);
+      color: var(--text-muted);
+      background: rgba(15, 23, 42, 0.9);
+    }
+
+    .pill span {
+      opacity: 0.9;
+    }
+
+    .micro-legend {
+      margin-top: 10px;
+      font-size: 11px;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+
+    .micro-legend b {
+      color: #e5e7eb;
+      font-weight: 500;
+    }
+
+    /* Sections */
+
+    section {
+      margin-bottom: 32px;
+    }
+
+    section h2 {
+      font-size: 20px;
+      margin: 0 0 8px;
+      letter-spacing: -0.02em;
+    }
+
+    section p {
+      margin: 0 0 10px;
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    .section-kicker {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+    }
+
+    /* Problem breakdown */
+
+    .problem-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+      margin-top: 12px;
+    }
+
+    @media (min-width: 720px) {
+      .problem-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+
+    .problem-card {
+      background: var(--bg-soft);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-subtle);
+      padding: 14px 14px 12px;
+      font-size: 13px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .problem-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at top left, rgba(56, 189, 248, 0.09), transparent 55%);
+      opacity: 0.95;
+      pointer-events: none;
+    }
+
+    .problem-icon {
+      width: 28px;
+      height: 28px;
+      border-radius: 12px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      margin-bottom: 6px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .problem-icon.danger {
+      background: rgba(248, 113, 113, 0.12);
+      border: 1px solid rgba(248, 113, 113, 0.55);
+    }
+
+    .problem-icon.warn {
+      background: rgba(251, 191, 36, 0.12);
+      border: 1px solid rgba(251, 191, 36, 0.55);
+    }
+
+    .problem-icon.info {
+      background: rgba(56, 189, 248, 0.12);
+      border: 1px solid rgba(56, 189, 248, 0.55);
+    }
+
+    .problem-card h3 {
+      margin: 0 0 4px;
+      font-size: 15px;
+      color: #e5e7eb;
+      position: relative;
+      z-index: 1;
+    }
+
+    .problem-card p {
+      font-size: 13px;
+      margin-bottom: 6px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      padding: 3px 8px;
+      border-radius: var(--radius-pill);
+      background: rgba(15, 23, 42, 0.8);
+      border: 1px solid rgba(148, 163, 184, 0.55);
+      color: var(--text-muted);
+      position: relative;
+      z-index: 1;
+    }
+
+    .chip-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: #22c55e;
+    }
+
+    /* Meta crisis summary */
+
+    .meta-card {
+      margin-top: 10px;
+      background: rgba(15, 23, 42, 0.9);
+      border-radius: var(--radius-lg);
+      border: 1px dashed rgba(148, 163, 184, 0.7);
+      padding: 12px 14px;
+      font-size: 13px;
+    }
+
+    .meta-card strong {
+      color: #e5e7eb;
+      font-weight: 600;
+    }
+
+    .meta-list {
+      list-style: none;
+      padding: 0;
+      margin: 8px 0 0;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .meta-list li {
+      margin-bottom: 4px;
+      display: flex;
+      gap: 6px;
+      align-items: flex-start;
+    }
+
+    .meta-bullet {
+      width: 14px;
+      display: inline-block;
+      text-align: center;
+      opacity: 0.8;
+    }
+
+    /* Solutions */
+
+    #solutions {
+      scroll-margin-top: 80px;
+    }
+
+    .solutions-layout {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+      margin-top: 12px;
+    }
+
+    @media (min-width: 900px) {
+      .solutions-layout {
+        grid-template-columns: 1.4fr 1fr;
+        align-items: flex-start;
+      }
+    }
+
+    .solutions-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    @media (min-width: 720px) {
+      .solutions-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    .solution-card {
+      background: var(--bg-soft);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-subtle);
+      padding: 14px 14px 12px;
+      font-size: 13px;
+    }
+
+    .solution-icon {
+      font-size: 16px;
+      margin-bottom: 4px;
+    }
+
+    .solution-card h3 {
+      margin: 0 0 4px;
+      font-size: 15px;
+      color: #e5e7eb;
+    }
+
+    .solution-card p {
+      font-size: 13px;
+      margin-bottom: 6px;
+    }
+
+    .solution-card ul {
+      margin: 4px 0 0;
+      padding-left: 16px;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .solution-card ul li {
+      margin-bottom: 3px;
+    }
+
+    .solution-side {
+      background: linear-gradient(145deg, rgba(56, 189, 248, 0.14), rgba(59, 130, 246, 0.08), rgba(15, 23, 42, 0.95));
+      border-radius: 20px;
+      border: 1px solid rgba(37, 99, 235, 0.7);
+      padding: 14px 14px 12px;
+      font-size: 13px;
+      box-shadow: 0 16px 35px rgba(15, 23, 42, 0.9);
+    }
+
+    .solution-side h3 {
+      margin: 0 0 4px;
+      font-size: 15px;
+    }
+
+    .solution-side p {
+      margin-bottom: 6px;
+      color: #e5e7eb;
+    }
+
+    .step-list {
+      list-style: none;
+      padding: 0;
+      margin: 6px 0 0;
+      font-size: 13px;
+    }
+
+    .step-list li {
+      margin-bottom: 6px;
+      display: flex;
+      gap: 8px;
+      align-items: flex-start;
+    }
+
+    .step-tag {
+      min-width: 18px;
+      height: 18px;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(15, 23, 42, 0.9);
+      background: rgba(15, 23, 42, 0.9);
+      font-size: 11px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 1px;
+    }
+
+    /* Call to action */
+
+    .cta {
+      margin-top: 8px;
+      background: radial-gradient(circle at right, rgba(16, 185, 129, 0.22), rgba(15, 23, 42, 0.98));
+      border-radius: 20px;
+      border: 1px solid rgba(55, 65, 81, 0.85);
+      padding: 14px 14px 12px;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+      font-size: 13px;
+    }
+
+    @media (min-width: 720px) {
+      .cta {
+        grid-template-columns: 2fr 1.1fr;
+        align-items: center;
+      }
+    }
+
+    .cta h2 {
+      font-size: 18px;
+      margin-bottom: 4px;
+    }
+
+    .cta strong {
+      color: #bbf7d0;
+    }
+
+    .cta-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      font-size: 12px;
+      color: #e5e7eb;
+    }
+
+    .cta-actions span {
+      display: flex;
+      gap: 6px;
+      align-items: center;
+    }
+
+    .cta-actions span b {
+      font-size: 11px;
+      opacity: 0.8;
+    }
+
+    /* Footer */
+
+    footer {
+      margin-top: 24px;
+      padding-top: 12px;
+      border-top: 1px solid rgba(31, 41, 55, 0.9);
+      font-size: 11px;
+      color: var(--text-muted);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 8px;
+      align-items: center;
+    }
+
+    footer a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    .share-hint {
+      font-size: 11px;
+      opacity: 0.9;
+    }
+  </style>
+</head>
+<body>
+  <div class="page-shell">
+    <div class="inner">
+      <header>
+        <div class="logo">
+          <div class="logo-badge">🌍</div>
+          <div class="logo-text">The Meta Problem</div>
+        </div>
+        <nav>
+          <a href="#problem">The Problem</a>
+          <a href="#solutions">Solutions</a>
+          <a href="#actions">What You Can Do</a>
+        </nav>
+      </header>
+
+      <main>
+        <!-- HERO -->
+        <section class="hero">
+          <div class="hero-left">
+            <div class="hero-tag">
+              <div class="pulse-dot"></div>
+              The world’s biggest problem — in plain language
+            </div>
+            <h1>
+              We upgraded our <span class="accent">power</span>,<br />
+              but not our <span class="accent">wisdom</span>.
+            </h1>
+            <p class="hero-sub">
+              The real crisis isn’t just climate or AI. It’s this:
+              <strong>our ability to change the world has grown faster than our
+              ability to wisely decide what to do with that power</strong> —
+              and to act together.
+            </p>
+
+            <div class="hero-actions">
+              <a href="#solutions" class="btn-primary">
+                See the solutions
+                <span>↓</span>
+              </a>
+              <a href="#problem" class="btn-ghost">
+                Understand the problem first
+              </a>
+            </div>
+
+            <div class="hero-footnote">
+              Simple language. No doom spiral. Clear next steps.
+            </div>
+          </div>
+
+          <div class="hero-right">
+            <div class="big-problem-card" aria-label="World's biggest problem summary">
+              <h2>The world’s biggest problem in one line</h2>
+              <p>
+                We share one planet and have god-level technology, but we’re still
+                running on:
+              </p>
+              <div class="pill-row">
+                <div class="pill">
+                  <span>🧠 Short-term, emotional brains</span>
+                </div>
+                <div class="pill">
+                  <span>🏛️ Old institutions &amp; rules</span>
+                </div>
+                <div class="pill">
+                  <span>📱 A broken information system</span>
+                </div>
+              </div>
+              <p style="margin-top: 8px;">
+                Put simply:
+                <strong>we are powerful, but badly coordinated.</strong>
+              </p>
+            </div>
+            <div class="micro-legend">
+              <b>Result:</b> Big crises (climate, wars, AI risks) are not random.
+              They are the natural outcome of a system where
+              <b>everyone is pushed to act in their own short-term interest, even
+              when it hurts our long-term future.</b>
+            </div>
+          </div>
+        </section>
+
+        <!-- PROBLEM -->
+        <section id="problem">
+          <div class="section-kicker">The Problem</div>
+          <h2>What’s actually going wrong?</h2>
+          <p>
+            Most headlines are symptoms. If we zoom out, three big things are
+            happening at the same time.
+          </p>
+
+          <div class="problem-grid" aria-label="Three core parts of the problem">
+            <article class="problem-card">
+              <div class="problem-icon danger">🔥</div>
+              <h3>1. We’re damaging our only home</h3>
+              <p>
+                We treat the planet like it’s infinite… but it isn’t. Climate
+                change, dying oceans, disappearing wildlife and exhausted soil
+                all come from the same pattern:
+                <b>take more now, worry later.</b>
+              </p>
+              <p>
+                It’s like burning the walls of your house to stay warm today—
+                and acting surprised when the roof starts to crack.
+              </p>
+              <div class="chip">
+                <span class="chip-dot"></span>
+                <span>Symptom: ecological &amp; planetary crisis</span>
+              </div>
+            </article>
+
+            <article class="problem-card">
+              <div class="problem-icon warn">⚙️</div>
+              <h3>2. The game is rigged against doing the right thing</h3>
+              <p>
+                Even when people want to do better, the system punishes them.
+                If one company reduces pollution but their rivals don’t, they
+                lose. If one country slows down dangerous weapons but others
+                don’t, they feel unsafe.
+              </p>
+              <p>
+                Everyone is stuck in a race no one truly wants to win.
+              </p>
+              <div class="chip">
+                <span class="chip-dot"></span>
+                <span>Cause: a global coordination failure</span>
+              </div>
+            </article>
+
+            <article class="problem-card">
+              <div class="problem-icon info">📡</div>
+              <h3>3. Our sense of reality is breaking</h3>
+              <p>
+                Algorithms show each of us a different world. Outrage travels
+                faster than truth. Deepfakes and misinformation blur the line
+                between “real” and “fake”.
+              </p>
+              <p>
+                If we can’t agree on basic facts, we can’t solve anything
+                together.
+              </p>
+              <div class="chip">
+                <span class="chip-dot"></span>
+                <span>Barrier: a shared-reality &amp; trust crisis</span>
+              </div>
+            </article>
+          </div>
+
+          <div class="meta-card">
+            <strong>This is the “meta-crisis” in one picture:</strong>
+            <ul class="meta-list">
+              <li>
+                <span class="meta-bullet">1️⃣</span>
+                <span>We have <b>planet-scale power</b> (technology, industry,
+                global markets).</span>
+              </li>
+              <li>
+                <span class="meta-bullet">2️⃣</span>
+                <span>But our <b>rules, incentives and politics</b> are still
+                local, short-term and divided.</span>
+              </li>
+              <li>
+                <span class="meta-bullet">3️⃣</span>
+                <span>And our <b>information systems</b> feed confusion and
+                conflict instead of clarity and cooperation.</span>
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- SOLUTIONS -->
+        <section id="solutions">
+          <div class="section-kicker">Solutions</div>
+          <h2>So what do we actually do about it?</h2>
+          <p>
+            There is no single magic fix. But there <em>are</em> four big
+            levers we can pull — as people, communities, companies and
+            governments — that all push in the right direction.
+          </p>
+
+          <div class="solutions-layout">
+            <div class="solutions-grid" aria-label="Four solution levers">
+              <article class="solution-card">
+                <div class="solution-icon">👀</div>
+                <h3>1. See clearly</h3>
+                <p>
+                  Strengthen our “sense-making”: how we tell what’s real, what
+                  matters and what’s noise.
+                </p>
+                <ul>
+                  <li>Support quality journalism and fact-checking.</li>
+                  <li>Slow down before sharing; ask “who benefits if I believe this?”</li>
+                  <li>Teach kids (and adults) how algorithms shape what we see.</li>
+                </ul>
+              </article>
+
+              <article class="solution-card">
+                <div class="solution-icon">🧩</div>
+                <h3>2. Fix the game</h3>
+                <p>
+                  Change the incentives so doing the right thing isn’t punished.
+                </p>
+                <ul>
+                  <li>Push for rules that reward clean energy and fair business.</li>
+                  <li>Measure more than GDP: health, well-being, resilience.</li>
+                  <li>Support companies that choose long-term good over quick profit.</li>
+                </ul>
+              </article>
+
+              <article class="solution-card">
+                <div class="solution-icon">🧠</div>
+                <h3>3. Grow up (on the inside)</h3>
+                <p>
+                  Develop emotional skills that make cooperation possible at
+                  scale.
+                </p>
+                <ul>
+                  <li>Practice listening to people you disagree with.</li>
+                  <li>Learn basic emotional regulation: pause, breathe, respond.</li>
+                  <li>Normalize therapy, coaching and mental health support.</li>
+                </ul>
+              </article>
+
+              <article class="solution-card">
+                <div class="solution-icon">🤝</div>
+                <h3>4. Act together</h3>
+                <p>
+                  Build institutions and movements that can act at the scale of
+                  the problems.
+                </p>
+                <ul>
+                  <li>Join or support groups working on climate, governance or tech safety.</li>
+                  <li>Experiment with new ways of deciding together: citizens’ assemblies, participatory budgeting, local councils.</li>
+                  <li>Vote, show up, and stay engaged beyond elections.</li>
+                </ul>
+              </article>
+            </div>
+
+            <aside class="solution-side">
+              <h3>A simple roadmap for our time</h3>
+              <p>
+                If the problem is “power without wisdom or coordination”, the
+                answer is to grow both — fast.
+              </p>
+              <ol class="step-list">
+                <li>
+                  <span class="step-tag">1</span>
+                  <span><b>Clean up our view of reality.</b> Better information,
+                  less manipulation.</span>
+                </li>
+                <li>
+                  <span class="step-tag">2</span>
+                  <span><b>Update the rules.</b> Align money, power and tech
+                  with long-term human and planetary well-being.</span>
+                </li>
+                <li>
+                  <span class="step-tag">3</span>
+                  <span><b>Upgrade ourselves.</b> More emotional maturity, less
+                  “us vs. them”.</span>
+                </li>
+                <li>
+                  <span class="step-tag">4</span>
+                  <span><b>Organize.</b> Move from isolated good intentions to
+                  coordinated action.</span>
+                </li>
+              </ol>
+            </aside>
+          </div>
+        </section>
+
+        <!-- PERSONAL ACTIONS / CTA -->
+        <section id="actions" class="cta" aria-label="What you can do today">
+          <div>
+            <h2>What can <strong>one person</strong> actually do?</h2>
+            <p>
+              No single person can “fix the world”. But every person can either
+              feed the problem — or help shift the direction.
+            </p>
+            <p style="font-size: 13px; color: #e5e7eb;">
+              Think of it this way: every click, share, vote, purchase,
+              conversation and habit is a tiny “vote” for the kind of future we
+              move toward.
+            </p>
+          </div>
+          <div class="cta-actions">
+            <span>
+              <b>1.</b>
+              Choose one issue (climate, democracy, AI safety, mental health)
+              and support a serious organization working on it.
+            </span>
+            <span>
+              <b>2.</b>
+              Make your information diet healthier: follow at least one source
+              that challenges your views respectfully.
+            </span>
+            <span>
+              <b>3.</b>
+              Talk about this problem with friends, family and coworkers —
+              <em>without</em> doom, with curiosity and hope.
+            </span>
+            <span>
+              <b>4.</b>
+              Look for ways to upgrade your own “inner software”: learn,
+              practice, reflect, repeat.
+            </span>
+          </div>
+        </section>
+      </main>
+
+      <footer>
+        <div>
+          Built as a simple explainer of the world’s biggest problem:
+          <span style="color: #e5e7eb;">power without shared wisdom or
+          coordination.</span>
+        </div>
+        <div class="share-hint">
+          If this page resonates, share it. Culture changes one
+          conversation at a time.
+        </div>
+      </footer>
+    </div>
+  </div>
+</body>
+</html>
